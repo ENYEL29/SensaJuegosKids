@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+:root{
+    --background-color:white;
+    --text-title-color: #3867ca;
+    --text-color: white;
+    --icon-color: #c97bd7;
+    --icon-menu-color: #fe68a8;
+    --menu-color: #10e6e1;
+    --menu-icon:#ffeb00;
+    
+    --text-selected-color:#fe2052;
+    --background-selected: #EBF0FF;
+    --background-hover: #F7F9FA;
+
+    --border-color: #E6E9ED;    
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+}
+
+header{
+    z-index: 200;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.45rem 2rem 0.45rem 1.27rem;
+    border-bottom: 1px solid var(--border-color);
+    position: fixed;
+    background-color: var(--background-color);
+    top:0;
+    left: 0;
+}
+.icons-header img{
+    filter: brightness(0) saturate(100%) invert(26%) sepia(66%) saturate(446%) hue-rotate(195deg) brightness(93%) contrast(91%);
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1.4rem;
+
+}
+/*MENU*/
+.menu-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.menu{
+    width: 1.5rem;
+    height: 37%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;   
+}
+.menu div{
+    width: 100%;
+    height: 0.15rem;
+    background-color: var(--text-selected-color);
+    transition: all 0.2s ease;
+}
+.menu.menu-toggle div:first-child{
+    width: 40%;
+    transform: rotate(-25deg) translate(-30%,150%);
+}
+.menu.menu-toggle div:last-child{
+    width: 40%;
+    transform: rotate(25deg) translate(-30%,-150%);
+}
+/*BRAND*/
+.brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:0.6rem;
+}
+.brand .logo{
+    width: 1.7rem;
+}
+.brand .name{
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--text-title-color);
+}
+/*Right Section*/
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1.6rem;    
+}
+.right a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: background-color 0.2 ease;
+}
+.right a:hover{
+    background-color: var(--background-hover);
+}
+.right img{
+    width: 1.5rem;
+    margin: 0.5rem;
+}
+.right .user{
+    width: 2.1rem;
+    border-radius: 50%;
+}
+/*SIDEBAR*/
+.sidebar{
+    margin-top: 3.5rem;
+    width: 4rem;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 1.1rem 0;
+    border-right: 1px solid var(--border-color);
+    overflow: auto;
+    background-color: var(--background-color);
+    transition: width 0.3s ease;
+}
+.sidebar.menu-toggle{
+    width: 18.75rem;
+}
+.sidebar a{
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+    padding: 0.5rem 0.7rem;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--text-title-color);
+}
+.sidebar a:hover{
+    background-color: var(--text-title-color);
+    color: var(--text-color);
+    font-weight: bold;  
+}
+
+/*BARRA DE BUSQUEDA*/
+.search-container {
+    position: relative;
+}
+
+/* Ocultar el campo de búsqueda por defecto */
+.search {
+    width: calc(100% - 20px); /* Ajusta el ancho para considerar el padding y el margin */
+    padding: 8px;
+    margin: 0 10px; /* Agrega un margen de 5px a la izquierda y derecha */    
+    border: 1px solid var(--text-title-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: none; /* Oculta el input por defecto */
+}
+/* Efecto al hacer foco en el campo de búsqueda */
+.search:focus {
+    border-color: #fe2052; /* Cambia el color del borde */
+    box-shadow: 0 0 5px rgba(254, 32, 82, 0.5); /* Sombra alrededor del campo */
+    outline: none; /* Elimina el contorno predeterminado */
+}
+
+/* Mostrar la barra de búsqueda cuando el sidebar está abierto */
+.sidebar:not(.menu-toggle) .search {
+    display: block; /* Muestra la barra de búsqueda */
+}
+
+/*ICONO DE SEARCH*/
+.sidebar a.search-icon{
+    transition: filter 0.2s ease;
+}
+.sidebar a.search-icon:hover{
+    background-color: var(--menu-icon);
+}
+.sidebar a.search-icon:hover img{
+    filter: brightness(0) invert(1);
+}
+
+/* Ocultar el ícono de búsqueda cuando el sidebar está abierto */
+.sidebar:not(.menu-toggle) .search-icon {
+    display: block; /* Mostrar el ícono de búsqueda cuando el sidebar está cerrado */
+}
+
+.sidebar.menu-toggle .search-icon {
+    display: none; /* Ocultar el ícono de búsqueda cuando el sidebar está abierto */
+}
+
+
+/*ICONOS */
+.sidebar img {   
+    width: 1.6rem;
+    filter: brightness(0) saturate(100%) invert(26%) sepia(66%) saturate(446%) hue-rotate(195deg) brightness(93%) contrast(91%);
+    transition: filter 0.2s ease; 
+}
+/* Cambia los íconos a blanco al pasar el cursor por el enlace */
+.sidebar a.icons:hover img {
+    filter: brightness(0) invert(1); /* Convierte los íconos a blanco */
+}
+.sidebar a.selected{
+    font-weight: bold;
+    color: var(--text-title-color);
+    transition: filter 0.2s ease;
+}
+.sidebar a.selected:hover{
+    font-weight: bold;
+    color: var(--text-selected-color);
+    background-color: var(--background-selected);
+}
+.sidebar a.selected:hover img{
+    filter: brightness(0) saturate(100%) invert(34%) sepia(79%) saturate(4564%) hue-rotate(319deg) brightness(101%) contrast(102%);
+}
+
+
+
+/*MAIN*/
+main{
+    margin-top: 4rem;
+    margin-left: 4rem;
+    padding: 2rem;
+    transition: padding-left 0.5s ease;
+}
+main.menu-toggle{
+    margin-left: 18.75rem;
+}
+
+/*ICONO DE WHATSAPP*/
+.floating-icon {
+    position: fixed; /* Fija el ícono en su posición */
+    bottom: 20px; /* Espacio desde el fondo */
+    right: 20px; /* Espacio desde la derecha */
+    z-index: 100; /* Asegura que el ícono esté encima de otros elementos */
+}
+
+.floating-icon img {
+    width: 80px; /* Tamaño del ícono */
+    height: 80px; /* Tamaño del ícono */
+    transition: transform 0.3s ease; /* Suaviza la transición al hacer hover */
+}
+
+.floating-icon img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño del ícono al pasar el cursor */
+}
+
+
+
+/*RESPONSIVE*/
+
+@media (max-width:500px ){
+    .right .icons-header{
+        display: none;
+    }
+    .sidebar{
+        width: 0;
+    }
+    main{
+        margin-left: 0;
+    }
+    main.menu-toggle{
+        margin-left: 0;
+    }
+   
+    /* Transformar el icono en una "K" al activar el toggle */
+    .menu.menu-toggle div:first-child {
+    transform: rotate(45deg) translate(0.3rem, 0.1rem);
+    width: 50%; /* Ajustar ancho para la diagonal superior */
+    }
+
+    .menu.menu-toggle div:nth-child(2) {
+    transform: rotate(90deg); /* Crear la línea vertical central */
+    width: 25%; /* Reducir ancho para hacerla más estrecha */
+    margin-left: 0.4rem; /* Posicionar en el centro */
+    }
+
+    .menu.menu-toggle div:last-child {
+    transform: rotate(-45deg) translate(0.3rem, -0.1rem);
+    width: 50%; /* Ajustar ancho para la diagonal inferior */
+    }
+    .floating-icon img {
+        width: 50px; /* Tamaño del ícono */
+        height: 50px; /* Tamaño del ícono */
+        transition: transform 0.3s ease; /* Suaviza la transición al hacer hover */
+    }
+    
+    .floating-icon img:hover {
+        transform: scale(1.1); /* Aumenta el tamaño del ícono al pasar el cursor */
+    }
+    .sidebar{
+        margin-top: 2.5rem;
+    }
+}
